@@ -10,6 +10,7 @@ import Data.ByteString.Lazy.UTF8 (toString, fromString)
 import Data.Char (toLower)
 import Data.Text (pack, unpack)
 import Network.Mail.Mime (Address(..))
+import System.Directory (getHomeDirectory)
 
 defaultAddress = Address {
   addressName = Nothing,
@@ -29,7 +30,8 @@ $(deriveJSON (defaultOptions { fieldLabelModifier = (drop 7) . map toLower }) ''
 $(deriveJSON (defaultOptions { fieldLabelModifier = (drop 6) . map toLower }) ''Config)
 
 readoutConfig = do
-  configFile <- readFile "/home/aaron/.RssMail/config.json"
+  home <- getHomeDirectory
+  configFile <- readFile $ home ++ "/.RssMail/config.json"
   let conf = decode (fromString configFile) :: Maybe Config
   case conf of
          Just c -> return c
@@ -37,7 +39,7 @@ readoutConfig = do
            let c = Config {
              configFeeds = ["http://lambda-the-ultimate.org/rss.xml"],
              configTo = defaultAddress }
-           writeFile "/home/aaron/.RssMail/config.json" . toString $ encode c
+           writeFile (home ++ "/.RssMail/config.json") . toString $ encode c
            return c
 
 configThread config = do
