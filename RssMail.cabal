@@ -53,5 +53,5 @@ executable RssMail
   -- other-modules:       
   
   -- Other library packages from which modules are imported.
-  build-depends:       base ==4.6.*, feed == 0.3.*, smtp-mail == 0.1.*, download-curl == 0.1.*, text == 0.11.*, mime-mail == 0.4.*, utf8-string == 0.3.*
+  build-depends:       base ==4.6.*, feed == 0.3.*, smtp-mail == 0.1.*, download-curl == 0.1.*, text == 0.11.*, mime-mail == 0.4.*, utf8-string == 0.3.*, SHA == 1.6.*, bytestring == 0.10.*, containers == 0.5.*, binary == 0.7.*, directory == 1.2.*, aeson == 0.6.*
   
