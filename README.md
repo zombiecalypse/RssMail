@@ -26,15 +26,18 @@ project is like 1.5 days old).
 
 1. `mkdir ~/.RssMail`
 2. Edit `~/.RssMail/config.json`:
-    {
-       "feeds" : [
-          "http://jeremykun.com/feed/",
-          ...
-            ],
-          "to" : {
-            "name" : "Your Name",
-            "email" : "yourname@example.com"
-          }
-    }
+   ```json
+       {
+          "feeds" : [
+             "http://jeremykun.com/feed/",
+             ...
+               ],
+             "to" : {
+               "name" : "Your Name",
+               "email" : "yourname@example.com"
+             }
+       }
+   ```
+
 3. Run `RssMail` and receive a flood of emails.
 4. Add a cron job for `RssMail` as required. It will only send you updates.
